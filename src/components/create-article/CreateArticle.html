@@ -1,0 +1,55 @@
+<div id="create-article">
+    <div class="center">
+        <section id="content">
+            <h1 class="sub-header" v-if="!isEdit">Create Article</h1>
+            <h1 class="sub-header" v-else>Edit Article</h1>
+
+            <div id="form-create">
+                <form class="mid-form" @submit.prevent="saveArticle">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" v-model="article.title" required />
+                        <span v-if="submitted && !$v.article.title.required">This field is required</span>
+                        <span v-if="submitted && !$v.article.title.minLength">This field must have min 4
+                            characters</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea name="content" v-model="article.content" required></textarea>
+                        <span v-if="submitted && !$v.article.content.required">This field is required</span>
+                        <span v-if="submitted && !$v.article.content.minLength">This field must have min 10
+                            characters</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Image: </label>
+
+                        <div class="article-item article-edit" v-if="isEdit">
+                            <div class="image-wrap">
+                                <img :src="url + 'get-image/' + article.image" :alt="article.title"
+                                    v-if="article.image" />
+                                <img src="../../assets/img/image-not-available.jpg" alt="Article" v-else />
+                            </div>
+
+                        </div>
+                        <br>
+                        <input type="file" id="input-img" ref="file" name="file0" @change="fileChange()" />
+                        <!-- name=file0 because of the backend that received this called how file0-->
+                    </div>
+
+                    <br>
+                    <div v-if="isEdit">
+                        <input type="submit" value="Upload" class="btn-success" />
+                    </div>
+                    <div v-else>
+                        <input type="submit" value="Save" class="btn-success" />
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <Sidebar></Sidebar>
+    </div>
+</div>
