@@ -1,7 +1,11 @@
 {
-  "name": "vue-project",
+  "name": "spa-vue-project",
   "version": "0.1.0",
-  "private": true,
+  "author": "Alejo Taliento",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alejotaliento/SPA-VueProject.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
