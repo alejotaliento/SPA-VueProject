@@ -1,5 +1,7 @@
 # vue-project
 
+Server created for this project: https://github.com/alejotaliento/backend-server-SPA-frameworks
+
 ## Project setup
 ```
 npm install
